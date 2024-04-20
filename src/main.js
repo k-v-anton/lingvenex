@@ -11,7 +11,13 @@ const solutionData = {
 
 const helpData = {
   title: 'How can Lingvanex help you?',
-  text: "",
+  text: '',
+  buttonName: 'Request a free trial',
+}
+
+const productData = {
+  title: 'Who is this product for?',
+  text: 'Lingvanex Bot can simply solve a language barrier problem in your team, community,  with your international clients and outsourcing partners. It automatically identifies the languages  in a conversation and translates all messages of your team members into a chosen language.',
   buttonName: 'Request a free trial',
 }
 
@@ -51,16 +57,52 @@ const generateTitleSection = (title, text, isH1Title = false) => {
   return containerElement
 }
 
-
-
 const main = document.getElementById('main')
 const solution = document.getElementById('solution')
 const help = document.getElementById('help')
+const product = document.getElementById('product')
 
 main.prepend(generateTitleSection(mainData.title, mainData.text, true))
 main.append(generateButtonElement(mainData.buttonName))
 
-solution.prepend(generateTitleSection(solutionData.title, solutionData.text, false))
+solution.prepend(
+  generateTitleSection(solutionData.title, solutionData.text, false)
+)
 
 help.prepend(generateTitleSection(helpData.title, helpData.text, false))
 help.append(generateButtonElement(mainData.buttonName))
+
+product.prepend(
+  generateTitleSection(productData.title, productData.text, false)
+)
+product.append(generateButtonElement(productData.buttonName))
+
+// =============tabs============
+
+let activeTabProduct = 0
+const tabsProduct = document.getElementById('tabs-product')
+const tabsProductButtonsList = tabsProduct.querySelectorAll(
+  '.tabs_buttons__button'
+)
+
+const handleClickTabProductButton = (e) => {
+  activeTabProduct =
+    e.target && e.target.dataset && e.target.dataset.id
+      ? (activeTabProduct = +e.target.dataset.id)
+      : null
+
+  tabsProductButtonsList.forEach((btn) => {
+    if (
+      e.target &&
+      e.target.dataset &&
+      e.target.dataset.id &&
+      +btn.dataset.id === activeTabProduct
+    ) {
+      btn.classList.add('tabs_buttons__button-active')
+    } else {
+      btn.classList.remove('tabs_buttons__button-active')
+    }
+  })
+}
+
+tabsProduct.addEventListener('click', handleClickTabProductButton)
