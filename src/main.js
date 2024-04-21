@@ -84,25 +84,47 @@ const tabsProduct = document.getElementById('tabs-product')
 const tabsProductButtonsList = tabsProduct.querySelectorAll(
   '.tabs_buttons__button'
 )
+const tabsInfoSlides = tabsProduct.querySelectorAll('.tabs_info__slide')
 
 const handleClickTabProductButton = (e) => {
   activeTabProduct =
     e.target && e.target.dataset && e.target.dataset.id
       ? (activeTabProduct = +e.target.dataset.id)
-      : null
+      : activeTabProduct
 
-  tabsProductButtonsList.forEach((btn) => {
-    if (
-      e.target &&
-      e.target.dataset &&
-      e.target.dataset.id &&
-      +btn.dataset.id === activeTabProduct
-    ) {
-      btn.classList.add('tabs_buttons__button-active')
-    } else {
-      btn.classList.remove('tabs_buttons__button-active')
-    }
-  })
+  e.target.classList.contains('tabs_buttons__button') &&
+    tabsProductButtonsList.forEach((btn) => {
+      if (
+        e.target &&
+        e.target.dataset &&
+        e.target.dataset.id &&
+        +btn.dataset.id === activeTabProduct
+      ) {
+        btn.classList.add('tabs_buttons__button-active')
+      } else {
+        btn.classList.remove('tabs_buttons__button-active')
+      }
+    })
+
+  e.target.classList.contains('tabs_buttons__button') &&
+    tabsInfoSlides.forEach((slide, index) => {
+      const next = index === 2 ? 0 : index + 1
+      const pre = index === 0 ? 2 : index - 1
+
+      if (activeTabProduct === index) {
+        slide.classList.add('slide_one')
+        slide.classList.remove('slide_two')
+        slide.classList.remove('slide_three')
+
+        tabsInfoSlides[next].classList.add('slide_two')
+        tabsInfoSlides[next].classList.remove('slide_one')
+        tabsInfoSlides[next].classList.remove('slide_three')
+
+        tabsInfoSlides[pre].classList.add('slide_three')
+        tabsInfoSlides[pre].classList.remove('slide_one')
+        tabsInfoSlides[pre].classList.remove('slide_two')
+      }
+    })
 }
 
 tabsProduct.addEventListener('click', handleClickTabProductButton)
