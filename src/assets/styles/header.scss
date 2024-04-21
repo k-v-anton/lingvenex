@@ -14,6 +14,7 @@ $headerLinkShadow: 0px 4px 4px rgba(var.$black, 0.25);
   z-index: $headerIndex;
   @include mix.FCC;
   @include mix.position(fixed, 0, 0);
+  padding: 0 16px;
 }
 
 .wrapper {

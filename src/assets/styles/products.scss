@@ -21,6 +21,10 @@ $imageSlideRadius: 32px;
   gap: $tabsButtonsGap;
   margin-bottom: $tabButtonsIndent;
   @include mix.FCC;
+
+  @media (max-width: 768px) {
+    gap: 0;
+  }
 }
 
 .tabs_buttons__button {
@@ -61,6 +65,10 @@ $imageSlideRadius: 32px;
   grid-template-columns: repeat(2, 1fr);
   gap: 32px;
   padding: 42px;
+
+  @media (max-width: 768px) {
+    grid-template-columns: repeat(1, 1fr);
+  }
 }
 
 .tab_slide__info-container {
@@ -75,12 +83,6 @@ $imageSlideRadius: 32px;
 }
 
 .tab_slide__info-list {
-  font-family: 'Inter';
-  font-style: normal;
-  font-weight: 400;
-  font-size: 18px;
-  line-height: 140%;
-  letter-spacing: -0.01em;
   color: rgba(var.$darckGray, 0.9);
   @include mix.interFont(400, 18px, 140%);
 }
@@ -93,8 +95,11 @@ $imageSlideRadius: 32px;
 
 
 .tab_slide__image-container {
-  width: $imageSlideWidrh;
-  height: $imageSlideHeight;
+  max-width: $imageSlideWidrh;
+  max-height: $imageSlideHeight;
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
   border-radius: $imageSlideRadius;
 }
 
@@ -110,6 +115,10 @@ $imageSlideRadius: 32px;
   transform: translate(0, 42px);
   width: 100%;
   scale: 0.95;
+
+  @media (max-width: 768px) {
+    display: none;
+  }
 }
 
 .slide_three {
@@ -120,4 +129,8 @@ $imageSlideRadius: 32px;
   transform: translate(0, 84px);
   width: 100%;
   scale: 0.9;
+
+  @media (max-width: 768px) {
+    display: none;
+  }
 }

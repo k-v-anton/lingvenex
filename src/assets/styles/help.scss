@@ -12,6 +12,7 @@ $helpCardTitltIndent: 14px;
   padding: $helpPaddingContent;
   background: $helpBackgroundColor;
   @include mix.FCCC;
+
 }
 
 .help_greed {
@@ -20,6 +21,13 @@ $helpCardTitltIndent: 14px;
   gap: $helpGreedGap;
   width: $helpGreedWidth;
   grid-template-columns: repeat(3, 1fr);
+
+  @media (max-width: 768px) {
+    width: 100%;
+    grid-template-columns: repeat(1, 1fr);
+    text-align: center;
+    gap: 32px;
+  }
 }
 
 .help_card {
