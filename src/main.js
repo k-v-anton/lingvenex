@@ -136,3 +136,25 @@ const handleClickLogo = () => {
   window.scrollTo({ top: 0, behavior: 'smooth' })
 }
 logo.addEventListener('click', handleClickLogo)
+
+
+// =============navbar============
+
+let activeNavbarLink = 0
+const navbar = document.getElementById('navbar')
+const navbarList = document.querySelectorAll('.navbar_link')
+const activeNavbarLinkName = document.getElementById('active_navbar__link-name')
+activeNavbarLinkName.value = navbarList[activeNavbarLink].textContent.split('       ').join('')
+console.log(activeNavbarLinkName);
+
+console.log(navbarList[activeNavbarLink].textContent)
+
+const handleClickNavbar = (e) => {
+  navbarList[activeNavbarLink].classList.remove('navbar_link__active')
+  console.log(e.target.closest('.navbar_link').dataset.id);
+  activeNavbarLink = +e.target.closest('.navbar_link').dataset.id
+  navbarList[activeNavbarLink].classList.add('navbar_link__active')
+  activeNavbarLinkName.value = navbarList[activeNavbarLink].textContent.split('       ').join('')
+}
+
+navbar.addEventListener('click', handleClickNavbar)

@@ -10,6 +10,7 @@ $imageSlideRadius: 32px;
 .product {
   gap: 64px;
   @include mix.FCCC;
+  
 }
 
 .tabs {
@@ -20,6 +21,7 @@ $imageSlideRadius: 32px;
 .tabs_buttons__container {
   gap: $tabsButtonsGap;
   margin-bottom: $tabButtonsIndent;
+  padding: 0 16px;
   @include mix.FCC;
 
   @media (max-width: 768px) {
@@ -116,7 +118,7 @@ $imageSlideRadius: 32px;
   width: 100%;
   scale: 0.95;
 
-  @media (max-width: 768px) {
+  @media (max-width: 1024px) {
     display: none;
   }
 }
@@ -130,7 +132,7 @@ $imageSlideRadius: 32px;
   width: 100%;
   scale: 0.9;
 
-  @media (max-width: 768px) {
+  @media (max-width: 1024px) {
     display: none;
   }
 }

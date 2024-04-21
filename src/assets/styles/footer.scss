@@ -18,9 +18,18 @@ $footerListItemHeight: 32px;
   gap: $footerGreedGap;
   width: 100%;
   margin-bottom: $footerGreedIndent;
+  grid-template-columns: repeat(4, 1fr);
   grid-template-areas:
     'products applications legal company'
     'closed applications legal company';
+
+    @media (max-width:768px) {
+      grid-template-columns: repeat(2, 1fr);
+      grid-template-areas:
+      'products  legal '
+      'applications company'
+      'closed closed ';
+    }
 }
 
 .footer_greed__item-one {
