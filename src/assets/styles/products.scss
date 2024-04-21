@@ -1,9 +1,15 @@
 @use './mixins.scss' as mix;
 @use './variables.scss' as var;
 
+$tabsButtonsGap: 16px;
+$tabButtonsIndent: 32px;
+$imageSlideWidrh: 507px;
+$imageSlideHeight: 338px;
+$imageSlideRadius: 32px;
+
 .product {
   gap: 64px;
-  @include mix.FCC;
+  @include mix.FCCC;
 }
 
 .tabs {
@@ -12,8 +18,8 @@
 }
 
 .tabs_buttons__container {
-  gap: 16px;
-  margin-bottom: 32px;
+  gap: $tabsButtonsGap;
+  margin-bottom: $tabButtonsIndent;
   @include mix.FCC;
 }
 
@@ -26,21 +32,18 @@
   gap: 10px;
   background-color: transparent;
   border: none;
-  border-radius: 12px;
+  border-radius: var.$BUTTON_RADIUS;
+  color: var.$black;
+  transition: 
+    color var.$TRANSITION_TIME_PRIMARY var.$TRANSITION_FUNCTION_PRIMARY, 
+    background-color var.$TRANSITION_TIME_PRIMARY var.$TRANSITION_FUNCTION_PRIMARY;
 
-  font-family: 'Inter';
-  font-style: normal;
-  font-weight: 600;
-  font-size: 18px;
-  line-height: 100%;
-  letter-spacing: -0.03em;
-  color: #000000;
-  transition: color .5s ease-in-out, background-color .5s ease-in-out;
+  @include mix.interFont(600, 18px, 18px);
 }
 
 .tabs_buttons__button-active {
-  background-color: #0146FE;
-  color: #FFFFFF;
+  background-color: var.$blue;
+  color: var.$white;
 }
 
 .tabs_info__container {
@@ -50,15 +53,14 @@
 
 .tabs_info__slide {
   box-sizing: border-box;
-  background: #FFFFFF;
-  border: 2px solid rgba(0, 0, 0, 0.04);
-  box-shadow: 0px 4px 12px rgba(0, 0, 0, 0.12);
+  background: var.$white;
+  border: 2px solid rgba(var.$black, 0.04);
+  box-shadow: 0px 4px 12px rgba(var.$black, 0.12);
   border-radius: 32px;
   display: grid;
   grid-template-columns: repeat(2, 1fr);
   gap: 32px;
   padding: 42px;
-
 }
 
 .tab_slide__info-container {
@@ -68,13 +70,8 @@
 }
 
 .tab_slide__info-title {
-  font-family: 'Inter';
-  font-style: normal;
-  font-weight: 900;
-  font-size: 60px;
-  line-height: 100%;
-  letter-spacing: -0.05em;
-  color: #000000;
+  color: var.$black;
+  @include mix.interFont(900, 60px, 60px);
 }
 
 .tab_slide__info-list {
@@ -84,7 +81,8 @@
   font-size: 18px;
   line-height: 140%;
   letter-spacing: -0.01em;
-  color: rgba(42, 43, 47, 0.9);
+  color: rgba(var.$darckGray, 0.9);
+  @include mix.interFont(400, 18px, 140%);
 }
 
 .tab_slide__info-list--item {
@@ -93,11 +91,11 @@
   max-width: 80%;
 }
 
+
 .tab_slide__image-container {
-  background-color: red;
-  width: 507px;
-  height: 338px;
-  border-radius: 32px;
+  width: $imageSlideWidrh;
+  height: $imageSlideHeight;
+  border-radius: $imageSlideRadius;
 }
 
 .slide_one {

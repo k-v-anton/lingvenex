@@ -34,3 +34,12 @@
   line-height: $lineHeight;
 }
 
+@mixin interFont($fontWeight, $fontSize, $lineHeight, $letterSpacing: 0) {
+  font-family: inter;
+  font-weight: $fontWeight;
+  font-size: $fontSize;
+  letter-spacing: $letterSpacing;
+  line-height: $lineHeight;
+}
+
+
