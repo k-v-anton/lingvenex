@@ -128,3 +128,11 @@ const handleClickTabProductButton = (e) => {
 }
 
 tabsProduct.addEventListener('click', handleClickTabProductButton)
+
+// =============logo============
+
+const logo = document.getElementById('logo')
+const handleClickLogo = () => {
+  window.scrollTo({ top: 0, behavior: 'smooth' })
+}
+logo.addEventListener('click', handleClickLogo)

@@ -1,76 +1,70 @@
+@use './mixins.scss' as mix;
+@use './variables.scss' as var;
+
+$headerIndex: 10;
+$headerBorder: 1px solid #E6E7EC;
+$headerHeight: 80px;
+$headerNavbarGap: 16px;
+$headerLinkShadow: 0px 4px 4px rgba(var.$black, 0.25);
+
 .header {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  border: 1px solid #E6E7EC;
-  position: fixed;
-  top: 0;
-  left: 0;
   width: 100%;
-  background-color: #fff;
-  z-index: 10;
+  border: $headerBorder;
+  background-color: var.$white;
+  z-index: $headerIndex;
+  @include mix.FCC;
+  @include mix.position(fixed, 0, 0);
 }
 
 .wrapper {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  height: 80px;
+  height: $headerHeight;
+  @include mix.FCSB;
 }
 
 .logo {
   cursor: pointer;
 }
 
-
 .navbar {
   display: flex;
-  gap: 16px;
+  gap: $headerNavbarGap;
 }
 
 .navbar_link {
   text-decoration: none;
   display: flex;
-  color: #252525;
-  font-size: 16px;
-  line-height: 20px;
-  letter-spacing: 0.16px;
-  font-weight: 700;
+  color: var.$darckGray;
+  @include mix.openSanseFont(700, 16px, 20px, 0.16px);
 
   &:hover {
     .navbar_link_letter {
-      text-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
-      -webkit-text-stroke: 1px #111111;
+      text-shadow: $headerLinkShadow;
+      -webkit-text-stroke: 1px var.$black;
     }
   }
 }
 
 .navbar_link_letter {
-  transition: text-stroke .3s ease, text-shadow .3s ease;
+  transition: 
+    text-stroke var.$TRANSITION_TIME_PRIMARY var.$TRANSITION_FUNCTION_PRIMARY, 
+    text-shadow var.$TRANSITION_TIME_PRIMARY var.$TRANSITION_FUNCTION_PRIMARY;
 }
 
-
 .user {
-  display: flex;
-  align-items: center;
-  justify-content: center;
   gap: 24px;
+  @include mix.FCC;
 }
 
 .user_info {
-  display: flex;
   gap: 4px;
+  @include mix.FCC;
 }
 
-.user_info_image {}
+.user_info_image {
+  width: var.$SOCIAL_SIZE;
+}
 
 .user_info_name {
-
-  font-family: 'Open Sans';
-  font-style: normal;
-  font-weight: 700;
-  font-size: 16px;
-  line-height: 20px;
-  letter-spacing: 0.16px;
   color: #666666;
+  @include mix.openSanseFont(700, 16px, 20px, 0.16px)
 }

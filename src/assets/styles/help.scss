@@ -1,36 +1,37 @@
+@use './mixins.scss' as mix;
+@use './variables.scss' as var;
+
+$helpBackgroundColor: #F4F6FD;
+$helpPaddingContent: 64px 100px 70px;
+$helpGreedWidth: 920px;
+$helpGreedGap: 54px;
+$helpImageHeight: 70px;
+$helpCardTitltIndent: 14px;
+
 .help {
-  padding: 64px 100px 70px;
-  background: #F4F6FD;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  flex-direction: column;
+  padding: $helpPaddingContent;
+  background: $helpBackgroundColor;
+  @include mix.FCCC;
 }
 
 .help_greed {
-  display: grid;
-  grid-template-columns: repeat(3, 1fr);
-  gap: 16px;
-  width: 920px;
-  gap: 54px;
   margin: 70px auto;
+  display: grid;
+  gap: $helpGreedGap;
+  width: $helpGreedWidth;
+  grid-template-columns: repeat(3, 1fr);
 }
 
 .help_card {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  text-align: center;
+  @include mix.FCCC;
 }
 
 .help_card_svg-container {
-  height: 70px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
   width: 100%;
+  height: $helpImageHeight;
+  @include mix.FCC;
 }
 
 .help_card_title {
-  margin-bottom: 14px;
+  margin-bottom: $helpCardTitltIndent;
 }

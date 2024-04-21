@@ -1,31 +1,128 @@
+@use './mixins.scss' as mix;
+@use './variables.scss' as var;
+
+$footerPadding: 149px 16px 46px;
+$footerDotSize: 5px;
+$footerGreedGap: 26px;
+$footerGreedIndent: 19px;
+$footerGreedItemIndent: 15px;
+$footerListItemHeight: 32px;
+
 .footer {
-  padding: 149px 16px 46px;
+  padding: $footerPadding;
+  @include mix.FCCC;
+}
+
+.footer_greed_info {
+  display: grid;
+  gap: $footerGreedGap;
+  width: 100%;
+  margin-bottom: $footerGreedIndent;
+  grid-template-areas:
+    'products applications legal company'
+    'closed applications legal company';
+}
+
+.footer_greed__item-one {
+  grid-area: products;
+}
+
+.footer_greed__item-two {
+  grid-area: applications;
+}
+
+.footer_greed__item-three {
+  grid-area: legal;
+}
+
+.footer_greed__item-four {
+  grid-area: company;
+}
+
+.footer_greed__item-five {
+  grid-area: closed;
+}
+
+.footer_greed__item {
+  width: 100%;
+}
+
+.footer_greedi-item__title {
+  text-transform: uppercase;
+  margin-bottom: $footerGreedItemIndent;
+  color: var.$TITLE_COLOR_SECONDARY;
+  @include mix.openSanseFont(700, 12px, 26px, 1px)
+}
+
+.footer_time-work__title {
+  gap: .85rem;
   display: flex;
-  align-items: center;
-  justify-content: center;
+  position: relative;
+
+  p {
+    position: relative;
+
+    &:not(:last-child):before {
+      content: '';
+      position: absolute;
+      top: 50%;
+      right: 0;
+      width: $footerDotSize;
+      height: $footerDotSize;
+      background-color: var.$gray;
+      border-radius: 50%;
+      transform: translate(9px, -50%);
+    }
+  }
+
+  span {
+    text-transform: uppercase;
+    color: var.$gray;
+  }
+}
+
+.footer_greedi-item__list-item {
+  width: 100%;
+  height: $footerListItemHeight;
+
+  a {
+    width: 100%;
+    height: 100%;
+    display: inline-block;
+    text-decoration: none;
+    color: var.$gray;
+    @include mix.openSanseFont(400, 14px, 32px)
+  }
+
+  span {
+    color: var.$gray;
+    @include mix.openSanseFont(400, 14px, 26px)
+  }
+}
+
+.footer_greedi-item__list-item-title {
+  color: var.$gray;
+  @include mix.openSanseFont(600, 12px, 16px)
 }
 
 .footer_language__container {
   display: flex;
   align-items: center;
-  gap: 8px;
+  gap: var.$SOCIAL_INDENT;
+  margin-bottom: 12px;
 }
 
 .footer_language__name {
-  font-family: openSans;
-  font-style: normal;
-  font-weight: 600;
-  font-size: 14px;
-  line-height: 32px;
-  color: #252525;
+  color: var.$darckGray;
+  @include mix.openSanseFont(600, 14px, 32px)
 }
 
 .footer_social__container {
   display: flex;
-  gap: 8px;
+  gap: var.$SOCIAL_INDENT;
 }
 
 .footer_social__item {
-  width: 24px;
   aspect-ratio: 1;
+  width: var.$SOCIAL_SIZE;
 }

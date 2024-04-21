@@ -1,11 +1,19 @@
+@use './mixins.scss' as mix;
+@use './variables.scss' as var;
+
+$mainContainerPadding: 80px 16px;
+$mainTopIndent: 80px;
+$mainGap: 40px;
+$mainButtonContentPadding: 20px 93.5px;
+
 .main {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  padding: 80px 16px;
-  gap: 40px;
-  margin-top: 80px;
+  padding: $mainContainerPadding;
+  gap: $mainGap;
+  margin-top: $mainTopIndent;
+
+  @include mix.FCC;
 }
+
 .main_button_size {
-  padding: 20px 93.5px;
+  padding: $mainButtonContentPadding;
 }
